@@ -129,9 +129,9 @@ body.xmas .hat{display:block}
 body.xmas .drift{display:block}
 .bluescr .x{position:absolute;left:0;right:0;top:46%;text-align:center;font-size:40px;display:none}
 body.xmas .bluescr .x{display:block}
-.sv .snowcap{position:absolute;left:-2px;right:-2px;top:-7px;height:16px;z-index:5;display:none;pointer-events:none;
-  background:radial-gradient(14px 9px at 12% 70%,#fff 98%,transparent),radial-gradient(18px 10px at 38% 60%,#fff 98%,transparent),radial-gradient(12px 8px at 63% 72%,#fff 98%,transparent),radial-gradient(16px 10px at 88% 62%,#fff 98%,transparent),linear-gradient(transparent 55%,#fff 56%);
-  filter:drop-shadow(0 2px 2px rgba(0,0,0,.25))}
+.sv .snowcap{position:absolute;left:-2px;right:-2px;top:-4px;height:24px;z-index:5;display:none;pointer-events:none;filter:drop-shadow(0 2px 2px rgba(20,30,60,.28))}
+.sv .snowcap svg{width:100%;height:100%;display:block;overflow:visible}
+.sv:nth-child(even) .snowcap svg{transform:scaleX(-1)}
 body.xmas .sv .snowcap{display:block}
 
 /* ====================== AMBIENTE APP ====================== */
@@ -507,7 +507,7 @@ nav .ind{position:absolute;top:7px;bottom:7px;left:7px;width:calc((100% - 14px)/
 
 <script>
 'use strict';
-const VERSION = '4.0.0';
+const VERSION = '4.0.1';
 // Chiave TMDB integrata: chi installa l'app non deve configurare nulla
 const BUILTIN_KEY = '0a50c099cde8db0436545b4c191edec6';
 const apiKey = () => ((typeof st !== 'undefined' && st.key) || BUILTIN_KEY || '').trim();
@@ -612,8 +612,8 @@ function startSnow(){
   const ctx = cv.getContext('2d'); let W, H, dpr = Math.min(2, devicePixelRatio || 1);
   const size = () => { W = innerWidth; H = innerHeight; cv.width = W*dpr; cv.height = H*dpr; cv.style.width = W + 'px'; cv.style.height = H + 'px'; ctx.setTransform(dpr, 0, 0, dpr, 0, 0); };
   size(); addEventListener('resize', size);
-  const N = RM.matches ? 0 : 70;
-  const fl = Array.from({length: N}, () => ({x: Math.random(), y: Math.random(), r: .8 + Math.random()*2.4, v: .25 + Math.random()*.7, a: Math.random()*6.28, o: .35 + Math.random()*.55}));
+  const N = RM.matches ? 0 : 26;
+  const fl = Array.from({length: N}, () => ({x: Math.random(), y: Math.random(), r: .6 + Math.random()*1.6, v: .18 + Math.random()*.45, a: Math.random()*6.28, o: .25 + Math.random()*.4}));
   let last = performance.now();
   function f(t){
     const dt = Math.min(50, t - last)/16; last = t;
@@ -855,7 +855,7 @@ function renderServices(){
   if (!list.length){ g.style.display = 'block'; g.innerHTML = '<div class="empty">Nessun servizio attivo.<br>Attivali in Impostazioni.</div>'; return; }
   g.style.display = '';
   list.forEach((s, i) => {
-    const b = el('button', 'sv reveal-in', `<div class="tape"><div class="sp"></div><div class="rw a"><i></i></div><div class="lb"><span>${esc(s.name)}</span></div><div class="rw b"><i></i></div></div><div class="snowcap"></div><div class="case"><div class="stripes"></div><div class="hd"><div class="t1">${esc(s.name)}</div><div class="t2">${s.scheme ? 'Apre l’app' : 'Apre il sito'}</div><div class="t3">${esc(s.g)}</div></div><div class="t4">Sala videonoleggio</div><div class="shine"></div></div>`);
+    const b = el('button', 'sv reveal-in', `<div class="tape"><div class="sp"></div><div class="rw a"><i></i></div><div class="lb"><span>${esc(s.name)}</span></div><div class="rw b"><i></i></div></div><div class="snowcap"><svg viewBox="0 0 170 24" preserveAspectRatio="none"><path d="M0 9 C0 3 3 1 8 1 L162 1 C167 1 170 3 170 9 C166 11 162 9 158 11 C153 13 149 10 144 11 C142 11 141 12 141 14 C141 18 140 21 139 21 C138 21 137 18 137 14 C137 12 135 11 131 11 C125 10 121 13 115 12 C110 11 106 9 100 11 C98 12 98 13 98 15 C98 17 97 18 96 18 C95 18 94 17 94 15 C94 12 92 11 88 11 C82 11 78 13 72 12 C66 11 62 9 56 11 C50 13 46 10 42 11 C40 12 40 13 40 16 C40 20 39 22 38 22 C37 22 36 20 36 16 C36 13 35 12 32 12 C26 11 22 13 16 11 C10 9 6 12 0 9 Z" fill="#fbfdff"/><path d="M2 8 C10 10 18 8 26 10 C36 12 46 9 56 10 C68 11 78 9 90 10 C102 11 114 9 126 10 C138 11 150 9 168 8" stroke="#dfe8f5" stroke-width="1.6" fill="none" opacity=".9"/><circle cx="24" cy="4" r=".9" fill="#c9d6ea"/><circle cx="70" cy="5" r=".8" fill="#c9d6ea"/><circle cx="121" cy="4" r=".9" fill="#c9d6ea"/><circle cx="152" cy="5" r=".7" fill="#c9d6ea"/></svg></div><div class="case"><div class="stripes"></div><div class="hd"><div class="t1">${esc(s.name)}</div><div class="t2">${s.scheme ? 'Apre l’app' : 'Apre il sito'}</div><div class="t3">${esc(s.g)}</div></div><div class="t4">Sala videonoleggio</div><div class="shine"></div></div>`);
     b.style.cssText = svStyle(s) + `;--i:${i + 2}`;
     b.setAttribute('aria-label', 'Apri ' + s.name);
     holo(b); b.onclick = () => openService(s, null, b);
