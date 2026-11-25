@@ -1,4 +1,4 @@
-const VERSION = 'sala-3.4.2';
+const VERSION = 'sala-4.0.0';
 const SHELL = ['./', 'index.html', 'manifest.webmanifest', 'icon-180.png', 'icon-192.png', 'icon-512.png'];
 const IMGC = 'sala-img';
 

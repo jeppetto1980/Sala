@@ -100,6 +100,40 @@ input{font:inherit;color:inherit;user-select:text;-webkit-user-select:text}
 .intro.out{opacity:0;transition:opacity .45s ease}
 
 
+
+/* ====================== NATALE ====================== */
+body.xmas{--mag:#ff3355;--cya:#3ddc84;--yel:#ffd23f;--hot:linear-gradient(100deg,#e3263b,#ff7a59 50%,#ffd23f)}
+body.xmas .b1{background:radial-gradient(circle,#e3263b,transparent 65%)}
+body.xmas .b3{background:radial-gradient(circle,#1fae5b,transparent 65%);opacity:.3}
+#snow{position:fixed;inset:0;z-index:15;pointer-events:none;display:none}
+body.xmas #snow{display:block}
+body.xmas.intro-on #snow{z-index:101}
+.lights{position:absolute;left:0;right:0;height:46px;pointer-events:none;display:none;z-index:3}
+body.xmas .lights{display:block}
+.lights svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.lights i{position:absolute;width:10px;height:15px;margin-left:-5px;border-radius:50% 50% 45% 45%/60% 60% 40% 40%;background:var(--b);box-shadow:0 0 10px 3px var(--b),0 0 22px 6px color-mix(in srgb,var(--b) 50%,transparent);animation:twinkle 1.8s ease-in-out infinite;animation-delay:var(--d)}
+.lights i::before{content:"";position:absolute;left:2px;right:2px;top:-4px;height:5px;border-radius:2px;background:#2a3a2a}
+@keyframes twinkle{0%,100%{opacity:1;filter:brightness(1.15)}50%{opacity:.35;filter:brightness(.6);box-shadow:none}}
+.hero .lights{top:calc(var(--sat) + 40px)}
+.facade .lights{left:6%;right:6%;top:calc(var(--sat) + 7.5%)}
+.facade .lights.door{left:11%;right:11%;top:39.5%}
+.wreath{position:absolute;left:50%;top:26%;width:62px;height:62px;margin-left:-31px;border-radius:50%;display:none;
+  background:radial-gradient(circle,transparent 0 34%,#1a7a3a 35% 50%,#0f5a2a 51% 66%,transparent 67%),repeating-conic-gradient(#e3263b 0 6deg,transparent 6deg 40deg);
+  -webkit-mask:radial-gradient(circle,transparent 0 33%,#000 34% 66%,transparent 67%);mask:radial-gradient(circle,transparent 0 33%,#000 34% 66%,transparent 67%);filter:drop-shadow(0 4px 6px rgba(0,0,0,.4))}
+.wreath+.bow{position:absolute;left:50%;top:calc(26% + 44px);width:26px;height:16px;margin-left:-13px;display:none;background:radial-gradient(circle at 25% 50%,#e3263b 0 45%,transparent 46%),radial-gradient(circle at 75% 50%,#e3263b 0 45%,transparent 46%)}
+body.xmas .wreath,body.xmas .wreath+.bow{display:block}
+.hat{position:absolute;display:none;left:calc(50% - 100px);top:-4px;width:60px;height:54px;transform:rotate(-24deg);z-index:2;filter:drop-shadow(0 3px 4px rgba(0,0,0,.45))}
+.hat svg{width:100%;height:100%;display:block}
+body.xmas .hat{display:block}
+.drift{position:absolute;left:0;right:0;bottom:0;height:7%;display:none;background:radial-gradient(40px 22px at 10% 30%,#f4f8ff 98%,transparent),radial-gradient(60px 26px at 35% 40%,#eef4ff 98%,transparent),radial-gradient(50px 20px at 62% 30%,#f4f8ff 98%,transparent),radial-gradient(70px 28px at 90% 40%,#eef4ff 98%,transparent),linear-gradient(transparent 45%,#e9f0fc 46%)}
+body.xmas .drift{display:block}
+.bluescr .x{position:absolute;left:0;right:0;top:46%;text-align:center;font-size:40px;display:none}
+body.xmas .bluescr .x{display:block}
+.sv .snowcap{position:absolute;left:-2px;right:-2px;top:-7px;height:16px;z-index:5;display:none;pointer-events:none;
+  background:radial-gradient(14px 9px at 12% 70%,#fff 98%,transparent),radial-gradient(18px 10px at 38% 60%,#fff 98%,transparent),radial-gradient(12px 8px at 63% 72%,#fff 98%,transparent),radial-gradient(16px 10px at 88% 62%,#fff 98%,transparent),linear-gradient(transparent 55%,#fff 56%);
+  filter:drop-shadow(0 2px 2px rgba(0,0,0,.25))}
+body.xmas .sv .snowcap{display:block}
+
 /* ====================== AMBIENTE APP ====================== */
 .amb{position:fixed;inset:-20%;z-index:0;pointer-events:none;filter:blur(80px) saturate(1.2)}
 .blob{position:absolute;border-radius:50%;mix-blend-mode:screen}
@@ -367,21 +401,23 @@ nav .ind{position:absolute;top:7px;bottom:7px;left:7px;width:calc((100% - 14px)/
   <canvas id="icv"></canvas>
   <div class="facade" id="facade">
     <div class="frame">
-      <div class="pane l"><div class="stk a">Novità<br>ogni venerdì</div><div class="stk c">VHS</div><div class="bar"></div></div>
-      <div class="pane r"><div class="open-sign">APERTO</div><div class="stk b">Ricordati<br>di riavvolgere</div><div class="bar"></div></div>
+      <div class="pane l"><div class="wreath"></div><div class="bow"></div><div class="stk a" id="stkA">Novità<br>ogni venerdì</div><div class="stk c">VHS</div><div class="bar"></div></div>
+      <div class="pane r"><div class="wreath"></div><div class="bow"></div><div class="open-sign">APERTO</div><div class="stk b">Ricordati<br>di riavvolgere</div><div class="bar"></div></div>
     </div>
     <div class="lamp" style="left:18%"></div><div class="lamp" style="right:18%"></div>
-    <div class="sign"><span class="s1">SALA</span><span class="s2">VIDEONOLEGGIO</span><span class="s3"></span></div>
+    <div class="lights" data-n="16"></div><div class="lights door" data-n="12"></div><div class="drift"></div>
+    <div class="sign"><span class="hat"><svg viewBox="0 0 60 54"><path d="M8 44 C14 22 26 6 44 6 C52 6 56 12 54 20 C50 14 44 14 40 18 C36 24 40 36 44 44 Z" fill="#d81f35"/><path d="M14 40 C20 24 30 12 44 10" stroke="#ff6b7a" stroke-width="3" fill="none" stroke-linecap="round" opacity=".6"/><rect x="4" y="40" width="46" height="12" rx="6" fill="#fff"/><circle cx="54" cy="21" r="6" fill="#fff"/></svg></span><span class="s1">SALA</span><span class="s2">VIDEONOLEGGIO</span><span class="s3"></span></div>
   </div>
   <div class="vcrbg"></div>
   <div class="slot"></div>
   <div class="cass"><div class="lb"><b>SALA</b><i>VHS</i></div><div class="wn"><span></span><span></span></div></div>
-  <div class="bluescr"><div class="a">PLAY ▶</div><div class="b">CH 03</div><div class="c">SP</div><div class="d" id="tc">0:00:00</div></div>
+  <div class="bluescr"><div class="a">PLAY ▶</div><div class="b">CH 03</div><div class="c">SP</div><div class="d" id="tc">0:00:00</div><div class="x">BUONE FESTE</div></div>
   <div class="track"></div>
   <button class="skip" id="skip">Salta</button>
 </div>
 
 
+<canvas id="snow"></canvas>
 <div class="amb"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
 <div class="grain"></div>
 
@@ -390,7 +426,7 @@ nav .ind{position:absolute;top:7px;bottom:7px;left:7px;width:calc((100% - 14px)/
   <section class="view on" id="v-home">
     <div class="hero" id="hero">
       <div class="mesh"></div><div class="bg"></div><div class="bg"></div><div class="shade"></div><div class="scan"></div>
-      <div class="osd"><span>▶ PLAY</span><span class="rec" id="osdDate"></span></div>
+      <div class="lights" data-n="14"></div><div class="osd"><span>▶ PLAY</span><span class="rec" id="osdDate"></span></div>
       <div class="cap" id="hcap"></div>
       <div class="prog" id="prog"></div>
     </div>
@@ -438,6 +474,7 @@ nav .ind{position:absolute;top:7px;bottom:7px;left:7px;width:calc((100% - 14px)/
     <div class="h2">Apertura</div>
     <div class="box">
       <div class="srow"><div class="nm">Intro della videoteca<small id="introLbl"></small></div><button class="btn glass sm" id="introMode">Cambia</button></div>
+      <div class="srow"><div class="nm">Tema natalizio<small id="xmasLbl"></small></div><button class="btn glass sm" id="xmasMode">Cambia</button></div>
       <div class="srow"><div class="nm">Rivedila adesso</div><button class="btn glass sm" id="introNow">Guarda</button></div>
     </div>
     <div class="h2">I miei servizi</div>
@@ -470,7 +507,7 @@ nav .ind{position:absolute;top:7px;bottom:7px;left:7px;width:calc((100% - 14px)/
 
 <script>
 'use strict';
-const VERSION = '3.4.0';
+const VERSION = '4.0.0';
 // Chiave TMDB integrata: chi installa l'app non deve configurare nulla
 const BUILTIN_KEY = '0a50c099cde8db0436545b4c191edec6';
 const apiKey = () => ((typeof st !== 'undefined' && st.key) || BUILTIN_KEY || '').trim();
@@ -516,12 +553,13 @@ const MOODS = [
 const MINS = [[0,'Qualsiasi'],[6,'Da 6'],[7,'Da 7'],[8,'Da 8']];
 const SORTS = [['pop','Popolarità'],['top','Voto'],['new','Uscita']];
 const GEN = {28:'azione',12:'avventura',16:'animazione',35:'commedia',80:'crime',99:'documentario',18:'dramma',10751:'famiglia',14:'fantasy',36:'storia',27:'horror',10402:'musica',9648:'mistero',10749:'romantico',878:'fantascienza',53:'thriller',10752:'guerra',37:'western',10770:'film TV',10759:'azione e avventura',10762:'ragazzi',10763:'news',10764:'reality',10765:'sci-fi e fantasy',10766:'soap',10767:'talk',10768:'guerra e politica'};
+const XMAS_MODES = [['auto','Automatico, dal 20 novembre al 6 gennaio'],['on','Sempre attivo'],['off','Spento']];
 const INTRO_MODES = [['always','Ogni volta che apri l’app'],['daily','La prima apertura del giorno'],['never','Mai']];
 
 const st = {
   cfg: LS.get('services', null), key: LS.get('key', ''), saved: LS.get('saved', []),
   prefs: Object.assign({type:'movie', moods:[], min:0, sort:'pop'}, LS.get('prefs', {})),
-  intro: LS.get('intro', 'always'), results: [], page: 1, pages: 1, center: -1
+  intro: LS.get('intro', 'always'), xmas: LS.get('xmas', 'auto'), results: [], page: 1, pages: 1, center: -1
 };
 if (!['movie','tv','all'].includes(st.prefs.type)) st.prefs.type = 'movie';
 function normCfg(){
@@ -547,6 +585,52 @@ function meta(it){ const g = it.gen.slice(0, 2).map(x => GEN[x]).filter(Boolean)
 let tt;
 function toast(m, ms = 2600){ const t = $('#toast'); t.textContent = m; t.classList.add('on'); clearTimeout(tt); tt = setTimeout(() => t.classList.remove('on'), ms); }
 
+
+/* ====================== NATALE ====================== */
+function isXmas(){
+  if (st.xmas === 'on') return true; if (st.xmas === 'off') return false;
+  const d = new Date(), m = d.getMonth(), g = d.getDate();
+  return (m === 10 && g >= 20) || m === 11 || (m === 0 && g <= 6);
+}
+const XMAS = isXmas();
+if (XMAS){
+  document.body.classList.add('xmas');
+  MOODS.unshift({id:'natale', e:'🎄', l:'Film di Natale', c1:'#e3263b', c2:'#0f5a2a', kw:'207317', m:'', t:''});
+}
+function buildLights(){
+  const cols = ['#ff3b4f','#ffd23f','#3ddc84','#3b8bff','#ff8a3d'];
+  document.querySelectorAll('.lights').forEach(L => {
+    const n = +L.dataset.n || 12; let h = '<svg viewBox="0 0 100 46" preserveAspectRatio="none"><path d="M0 6 ' ;
+    for (let i = 0; i < n; i++){ const x0 = i*100/n, x1 = (i + 1)*100/n; h += `Q${(x0 + x1)/2} 30 ${x1} 6 `; }
+    h += '" fill="none" stroke="#1e2a1e" stroke-width="1.2" vector-effect="non-scaling-stroke"/></svg>';
+    for (let i = 0; i < n; i++){ const x = (i + .5)*100/n; h += `<i style="left:${x}%;top:17px;--b:${cols[i % cols.length]};--d:${(-(i*.37) % 1.8).toFixed(2)}s"></i>`; }
+    L.innerHTML = h;
+  });
+}
+function startSnow(){
+  const cv = $('#snow'); if (!cv) return;
+  const ctx = cv.getContext('2d'); let W, H, dpr = Math.min(2, devicePixelRatio || 1);
+  const size = () => { W = innerWidth; H = innerHeight; cv.width = W*dpr; cv.height = H*dpr; cv.style.width = W + 'px'; cv.style.height = H + 'px'; ctx.setTransform(dpr, 0, 0, dpr, 0, 0); };
+  size(); addEventListener('resize', size);
+  const N = RM.matches ? 0 : 70;
+  const fl = Array.from({length: N}, () => ({x: Math.random(), y: Math.random(), r: .8 + Math.random()*2.4, v: .25 + Math.random()*.7, a: Math.random()*6.28, o: .35 + Math.random()*.55}));
+  let last = performance.now();
+  function f(t){
+    const dt = Math.min(50, t - last)/16; last = t;
+    if (!document.hidden){
+      ctx.clearRect(0, 0, W, H);
+      for (const p of fl){
+        p.y += p.v*dt*.0022*(H/700)*3; p.a += .01*dt; p.x += Math.sin(p.a)*.0006*dt;
+        if (p.y > 1.02){ p.y = -.02; p.x = Math.random(); }
+        ctx.globalAlpha = p.o; ctx.fillStyle = '#fff'; ctx.beginPath(); ctx.arc(p.x*W, p.y*H, p.r, 0, 6.283); ctx.fill();
+      }
+    }
+    requestAnimationFrame(f);
+  }
+  if (N) requestAnimationFrame(f);
+}
+if (XMAS){ buildLights(); startSnow(); const a = document.getElementById('stkA'); if (a) a.innerHTML = 'Speciale<br>Natale'; }
+
 /* ====================== INTRO ====================== */
 function shouldIntro(){
   if (RM.matches || st.intro === 'never') return false;
@@ -563,7 +647,7 @@ function introCovers(){
 function playIntro(){
   return new Promise(done => {
     const I = $('#intro'), cv = $('#icv'), ctx = cv.getContext('2d'), F = $('#facade');
-    I.style.display = ''; I.className = 'intro'; F.className = 'facade';
+    I.style.display = ''; I.className = 'intro'; F.className = 'facade'; document.body.classList.add('intro-on');
     let W, H, dpr = Math.min(2, devicePixelRatio || 1), cz = 0, alive = true, raf;
     W = innerWidth; H = innerHeight; cv.width = W*dpr; cv.height = H*dpr; cv.style.width = W + 'px'; cv.style.height = H + 'px'; ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     const covers = introCovers();
@@ -588,7 +672,7 @@ function playIntro(){
     }
     items.sort((a, b) => b.z0 - a.z0);
     const dots = []; for (let i = 0; i < 260; i++) dots.push([rnd()*2 - 1, rnd()*(ZEND + 2), STRIPE[(rnd()*STRIPE.length)|0]]);
-    const SIGNS = [[3.2,'NOVITÀ'],[6.8,'AZIONE'],[10.4,'COMMEDIA'],[14,'HORROR']];
+    const SIGNS = XMAS ? [[3.2,'NATALE'],[6.8,'FAMIGLIA'],[10.4,'COMMEDIA'],[14,'AZIONE']] : [[3.2,'NOVITÀ'],[6.8,'AZIONE'],[10.4,'COMMEDIA'],[14,'HORROR']];
     const FOC = .62;
     const P = (x, y, z) => { const d = Math.max(.05, z - cz), f = H*FOC/d; return [W/2 + x*f*.95, H*.5 - y*f*.95]; };
     const quad = (a, b, c, d, fill) => { ctx.fillStyle = fill; ctx.beginPath(); ctx.moveTo(a[0], a[1]); ctx.lineTo(b[0], b[1]); ctx.lineTo(c[0], c[1]); ctx.lineTo(d[0], d[1]); ctx.closePath(); ctx.fill(); };
@@ -621,6 +705,11 @@ function playIntro(){
       for (let z = 1; z < zf; z += 1.6){ const z0 = Math.max(z, cz + NEAR), z1 = z + 1; if (z1 <= z0) continue;
         quad(P(-.5, 1.15, z0), P(-.38, 1.15, z0), P(-.38, 1.15, z1), P(-.5, 1.15, z1), '#ffffff');
         quad(P(.38, 1.15, z0), P(.5, 1.15, z0), P(.5, 1.15, z1), P(.38, 1.15, z1), '#ffffff'); }
+      if (XMAS){ const LC = ['#ff3b4f','#ffd23f','#3ddc84','#3b8bff']; let k = 0;
+        for (let z = 1.2; z < 14; z += .45){ const d = z - cz; if (d < .3) { k++; continue; } const r = Math.max(1, 5/d);
+          for (const s of [-1, 1]){ const p = P(s*.97, 1.08 - .04*Math.sin(z*7), z); ctx.globalAlpha = Math.min(1, (14 - d)/5); ctx.fillStyle = LC[(k + (s > 0 ? 2 : 0)) % 4]; ctx.shadowColor = ctx.fillStyle; ctx.shadowBlur = r*3; ctx.beginPath(); ctx.arc(p[0], p[1], r, 0, 6.283); ctx.fill(); }
+          k++; }
+        ctx.shadowBlur = 0; ctx.globalAlpha = 1; }
       // scaffali blu con ripiani bianchi
       for (const s of [-1, 1]){
         wq(s, -1, 1.15, 0, zf, '#0f3aa8');
@@ -649,9 +738,9 @@ function playIntro(){
         const d = z - cz; if (d < .35 || d > 13) continue;
         const f = H*FOC/d, [x, y] = P(0, .98, z), w = f*.9, h = f*.2;
         ctx.save(); ctx.globalAlpha = Math.min(1, (13 - d)/4, (d - .35)*2);
-        ctx.fillStyle = '#ffd23f'; ctx.shadowColor = 'rgba(255,210,63,.6)'; ctx.shadowBlur = Math.min(24, f*.06);
+        ctx.fillStyle = XMAS ? '#d81f35' : '#ffd23f'; ctx.shadowColor = XMAS ? 'rgba(255,60,80,.6)' : 'rgba(255,210,63,.6)'; ctx.shadowBlur = Math.min(24, f*.06);
         ctx.beginPath(); ctx.roundRect ? ctx.roundRect(x - w/2, y - h/2, w, h, h*.18) : ctx.rect(x - w/2, y - h/2, w, h); ctx.fill();
-        ctx.shadowBlur = 0; ctx.fillStyle = '#0d2f86'; ctx.font = `800 ${Math.max(4, h*.55)}px U, system-ui`; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+        ctx.shadowBlur = 0; ctx.fillStyle = XMAS ? '#ffffff' : '#0d2f86'; ctx.font = `800 ${Math.max(4, h*.55)}px U, system-ui`; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
         ctx.fillText(t, x, y + h*.04);
         ctx.restore();
       }
@@ -674,7 +763,7 @@ function playIntro(){
       I.classList.add('blue', 'glitch');
       await wait(fast ? 260 : 480);
       I.classList.add('out'); document.body.classList.add('entered');
-      await wait(460); alive = false; cancelAnimationFrame(raf); clearInterval(tci); I.style.display = 'none'; I.className = 'intro'; done();
+      await wait(460); alive = false; cancelAnimationFrame(raf); clearInterval(tci); I.style.display = 'none'; I.className = 'intro'; document.body.classList.remove('intro-on'); done();
     }
     $('#skip').onclick = e => { e.stopPropagation(); finish(true); };
     I.onclick = () => finish(true);
@@ -716,14 +805,14 @@ async function loadHero(){
   }
   try {
     const c = LS.get('hero', null);
-    if (c && Date.now() - c.t < 6*36e5 && c.sig === sigServices() && c.items.length) heroList = c.items;
+    if (c && Date.now() - c.t < 6*36e5 && c.sig === sigServices() + XMAS && c.items.length) heroList = c.items;
     else {
       await loadProviders();
       const ids = providerIds(); if (!ids.length) throw new Error('NOPROV');
       const P = {language:'it-IT', watch_region:'IT', with_watch_providers: ids.join('|'), sort_by:'popularity.desc', 'vote_average.gte':6.8, 'vote_count.gte':300};
-      const [a, b] = await Promise.all([tmdb('/discover/movie', P), tmdb('/discover/tv', Object.assign({}, P, {without_genres:'10763,10767,10764'}))]);
+      const [a, b] = await Promise.all([tmdb('/discover/movie', XMAS ? Object.assign({}, P, {with_keywords:'207317', 'vote_average.gte':6.3, 'vote_count.gte':150}) : P), tmdb('/discover/tv', Object.assign({}, P, {without_genres:'10763,10767,10764'}))]);
       heroList = [...a.results.map(x => norm1(x, 'movie')), ...b.results.map(x => norm1(x, 'tv'))].filter(x => x.back).sort(() => Math.random() - .5).slice(0, 6);
-      LS.set('hero', {t: Date.now(), sig: sigServices(), items: heroList});
+      LS.set('hero', {t: Date.now(), sig: sigServices() + XMAS, items: heroList});
     }
     if (!heroList.length) throw new Error('vuoto');
     $('#prog').innerHTML = heroList.map(() => '<i></i>').join('');
@@ -743,7 +832,7 @@ function showHero(){
     L.classList.add('on'); O.classList.remove('on');
     cap.classList.add('swap');
     setTimeout(() => {
-      cap.innerHTML = `<span class="chip">Del momento sui tuoi servizi</span><div class="tt">${esc(it.title)}</div><div class="mm">${meta(it)}</div>
+      cap.innerHTML = `<span class="chip">${XMAS ? (it.type === 'movie' ? '🎄 Speciale Natale sui tuoi servizi' : 'Del momento sui tuoi servizi') : 'Del momento sui tuoi servizi'}</span><div class="tt">${esc(it.title)}</div><div class="mm">${meta(it)}</div>
         <div class="row"><button class="btn hot sm" id="heroGo">Cosa guardo stasera</button><button class="btn glass sm" id="heroInfo">Scheda</button>${ring(it.vote, 48)}</div>`;
       $('#heroGo').onclick = () => go('night'); $('#heroInfo').onclick = () => openDetail(it);
       void cap.offsetWidth; cap.classList.remove('swap');
@@ -766,7 +855,7 @@ function renderServices(){
   if (!list.length){ g.style.display = 'block'; g.innerHTML = '<div class="empty">Nessun servizio attivo.<br>Attivali in Impostazioni.</div>'; return; }
   g.style.display = '';
   list.forEach((s, i) => {
-    const b = el('button', 'sv reveal-in', `<div class="tape"><div class="sp"></div><div class="rw a"><i></i></div><div class="lb"><span>${esc(s.name)}</span></div><div class="rw b"><i></i></div></div><div class="case"><div class="stripes"></div><div class="hd"><div class="t1">${esc(s.name)}</div><div class="t2">${s.scheme ? 'Apre l’app' : 'Apre il sito'}</div><div class="t3">${esc(s.g)}</div></div><div class="t4">Sala videonoleggio</div><div class="shine"></div></div>`);
+    const b = el('button', 'sv reveal-in', `<div class="tape"><div class="sp"></div><div class="rw a"><i></i></div><div class="lb"><span>${esc(s.name)}</span></div><div class="rw b"><i></i></div></div><div class="snowcap"></div><div class="case"><div class="stripes"></div><div class="hd"><div class="t1">${esc(s.name)}</div><div class="t2">${s.scheme ? 'Apre l’app' : 'Apre il sito'}</div><div class="t3">${esc(s.g)}</div></div><div class="t4">Sala videonoleggio</div><div class="shine"></div></div>`);
     b.style.cssText = svStyle(s) + `;--i:${i + 2}`;
     b.setAttribute('aria-label', 'Apri ' + s.name);
     holo(b); b.onclick = () => openService(s, null, b);
@@ -838,8 +927,8 @@ const norm1 = (x, type) => ({id:x.id, type, title:x.title || x.name, year:(x.rel
   pop:x.popularity, date:x.release_date || x.first_air_date || '', poster:x.poster_path, back:x.backdrop_path, ov:x.overview, gen:x.genre_ids || []});
 async function discover(type, page){
   const ids = providerIds(); if (!ids.length) throw new Error('NOPROV');
-  const pr = st.prefs, g = pr.moods.map(m => MOODS.find(x => x.id === m)?.[type === 'movie' ? 'm' : 't']).filter(Boolean).join('|');
-  const P = {language:'it-IT', watch_region:'IT', with_watch_providers: ids.join('|'), page, include_adult:false, with_genres: g, 'vote_average.gte': pr.min || ''};
+  const pr = st.prefs, g = pr.moods.map(m => MOODS.find(x => x.id === m)?.[type === 'movie' ? 'm' : 't']).filter(Boolean).join('|'), kw = pr.moods.map(m => MOODS.find(x => x.id === m)?.kw).filter(Boolean).join('|');
+  const P = {language:'it-IT', watch_region:'IT', with_watch_providers: ids.join('|'), page, include_adult:false, with_genres: g, with_keywords: kw, 'vote_average.gte': pr.min || ''};
   if (type === 'tv') P.without_genres = '10763,10767' + (pr.moods.length ? ',10764,10766' : '');
   const dk = type === 'movie' ? 'primary_release_date' : 'first_air_date';
   if (pr.sort === 'pop'){ P.sort_by = 'popularity.desc'; P['vote_count.gte'] = type === 'movie' ? 80 : 40; }
@@ -900,15 +989,15 @@ async function loadMoodImages(){
   const apply = imgs => document.querySelectorAll('#moods .md').forEach(b => { const p = imgs[b.dataset.id]; if (!p) return; const im = b.querySelector('.im'); if (im.classList.contains('ok')) return;
     const i = new Image(); i.onload = () => { im.style.backgroundImage = `url('${i.src}')`; im.classList.add('ok'); }; i.src = IMG(p, 'w342'); });
   const c = LS.get('moodimg', null);
-  if (c && Date.now() - c.t < 864e5 && c.sig === sigServices()){ apply(c.imgs); return; }
+  if (c && Date.now() - c.t < 864e5 && c.sig === sigServices() + XMAS){ apply(c.imgs); return; }
   if (!apiKey() || moodImgLoading) return;
   moodImgLoading = true;
   try {
     await loadProviders(); const ids = providerIds(); if (!ids.length) return;
     const used = new Set(), imgs = {};
-    const res = await Promise.all(MOODS.map(m => tmdb('/discover/movie', {language:'it-IT', watch_region:'IT', with_watch_providers: ids.join('|'), with_genres: m.m.split('|')[0], sort_by:'popularity.desc', 'vote_count.gte':200}).catch(() => null)));
+    const res = await Promise.all(MOODS.map(m => tmdb('/discover/movie', {language:'it-IT', watch_region:'IT', with_watch_providers: ids.join('|'), with_genres: m.kw ? '' : m.m.split('|')[0], with_keywords: m.kw || '', sort_by:'popularity.desc', 'vote_count.gte': m.kw ? 50 : 200}).catch(() => null)));
     res.forEach((r, i) => { const pick = (r?.results || []).find(x => x.poster_path && !used.has(x.id)); if (pick){ used.add(pick.id); imgs[MOODS[i].id] = pick.poster_path; } });
-    LS.set('moodimg', {t: Date.now(), sig: sigServices(), imgs}); apply(imgs);
+    LS.set('moodimg', {t: Date.now(), sig: sigServices() + XMAS, imgs}); apply(imgs);
   } catch(e){} finally { moodImgLoading = false; }
 }
 $('#findBtn').onclick = () => find(1);
@@ -1061,6 +1150,7 @@ function renderSettings(){
   $('#ver').textContent = VERSION;
   $('#keyIn').value = st.key;
   $('#keyState').innerHTML = st.key ? '<span class="badge">personale</span>' : BUILTIN_KEY ? '<span class="badge">integrata</span>' : '<span class="badge w">da inserire</span>';
+  $('#xmasLbl').textContent = (XMAS_MODES.find(m => m[0] === st.xmas) || XMAS_MODES[0])[1] + (XMAS ? ', ora attivo' : ', ora spento');
   $('#introLbl').textContent = (INTRO_MODES.find(m => m[0] === st.intro) || INTRO_MODES[0])[1];
   const L = $('#svlist'); L.innerHTML = '';
   const mapped = PROV ? new Set(Object.values(PROV.map)) : null;
@@ -1090,6 +1180,7 @@ function renderSettings(){
     wrap.append(row, ed); L.appendChild(wrap);
   });
 }
+$('#xmasMode').onclick = () => { const i = XMAS_MODES.findIndex(m => m[0] === st.xmas); st.xmas = XMAS_MODES[(i + 1) % XMAS_MODES.length][0]; LS.set('xmas', st.xmas); toast('Riapro l\u2019app per applicare il tema'); setTimeout(() => location.reload(), 900); };
 $('#introMode').onclick = () => { const i = INTRO_MODES.findIndex(m => m[0] === st.intro); st.intro = INTRO_MODES[(i + 1) % INTRO_MODES.length][0]; LS.set('intro', st.intro); renderSettings(); };
 $('#introNow').onclick = () => { document.body.classList.remove('entered'); playIntro(); };
 $('#keySave').onclick = async () => {
